@@ -37,11 +37,10 @@ ArticleProvider.prototype.save = function(articles, callback) {
     for( var j=0; j<article.comments.length; j++ ) {
       article.comments[j].created_at = new Date();
     }
-    // console.log(this.dummyData);
     this.dummyData[this.dummyData.length] = article;
 
   }
-  // callback(null, articles);
+  callback(null, articles);
 };
 
 // Bootstrap with dummy data

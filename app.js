@@ -32,10 +32,27 @@ app.configure('production', function(){
 var articleProvider = new ArticleProvider();
 
 // Routes
+app.get('/blog/new', function(req, res) {
+  res.render('blog_new.jade', 
+    { locals:
+      {
+        title: 'New Post'
+      } 
+    });
+});
 
-// app.get('/', routes.index);
+app.post('/blog/new', function(req, res) {
+  articleProvider.save({
+    title: req.param('title')
+  , body: req.param('body') 
+  }, function(error, docs){
+    res.redirect('/')
+  });
+});
+
 app.get('/', function(req, res){
   articleProvider.findAll(function(error, docs) {
+    // responds with hard-coded docs object
     // res.send(docs);
     res.render('index.jade', { 
       locals: {
