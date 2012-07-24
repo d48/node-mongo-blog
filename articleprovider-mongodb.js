@@ -1,7 +1,7 @@
 var Db = require('mongodb').Db;
 var Connection = require('mongodb').Connection;
 var Server = require('mongodb').Server;
-var BSON= require('mongodb').BSON;
+var BSON= require('mongodb').pure().BSON;
 var ObjectID = require('mongodb').ObjectID;
 
 // Methods
@@ -43,7 +43,7 @@ ArticleProvider.prototype.findAll = function(callback) {
   });
 };
 
-ArticleProvider.prototype.findById = function(callback) {
+ArticleProvider.prototype.findById = function(id, callback) {
   this.getCollection(function(error, article_collection) {
     if (error) callback(error);
     else {
@@ -51,7 +51,7 @@ ArticleProvider.prototype.findById = function(callback) {
         {_id: article_collection.db.bson_serializer.ObjectID.createFromHexString(id)},
         function(error, result) {
           if (error) callback(error)
-          else callback(null, results)
+          else callback(null, result)
         }
       );
     } 
