@@ -5,6 +5,7 @@
 var express = require('express')
   , ArticleProvider = require('./articleprovider-mongodb.js').ArticleProvider;
 
+
 var app = module.exports = express.createServer();
 
 // Configuration
@@ -32,8 +33,6 @@ var articleProvider = new ArticleProvider('localhost', 27017);
 // Routes
 app.get('/', function(req, res){
   articleProvider.findAll(function(error, docs) {
-    // responds with hard-coded docs object
-    // res.send(docs);
     res.render('index.jade', { 
       locals: {
         title: 'Blog'
@@ -42,6 +41,7 @@ app.get('/', function(req, res){
     });
   });
 });
+
 
 app.get('/blog/new', function(req, res) {
   res.render('blog_new.jade', 
@@ -77,9 +77,8 @@ app.post('/blog/addComment', function(req, res) {
     person: req.param('person'),
     comment: req.param('comment'),
     created_at: new Date()
-  } 
-  , function(error, docs) { 
-    res.redirect('/blog' + req.param('_id'));
+  }, function(error, docs) { 
+      res.redirect('/blog/' + req.param('_id'));
     }
   );
 });

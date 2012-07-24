@@ -43,6 +43,11 @@ ArticleProvider.prototype.findAll = function(callback) {
   });
 };
 
+/** 
+ * Find article/blog entry by ID
+ * need to pass in createFromHexString on id for mongodb ObjectID spec
+ * of being a 12-byte value
+ */
 ArticleProvider.prototype.findById = function(id, callback) {
   this.getCollection(function(error, article_collection) {
     if (error) callback(error);
@@ -56,6 +61,25 @@ ArticleProvider.prototype.findById = function(id, callback) {
       );
     } 
   });
+};
+
+/**
+ * Adds comment to article 
+ */
+ArticleProvider.prototype.addCommentToArticle = function(articleId, comment, callback) {
+  this.getCollection(function(error, article_collection) {
+    if(error) callback(error);
+    else {
+      article_collection.update(
+          {_id: article_collection.db.bson_serializer.ObjectID.createFromHexString(articleId)}
+        , {"$push": {comments: comment}}
+        , function(error, article) {
+            if(error) callback(error);
+            else callback(null, article)
+          }
+      )
+    }
+  })
 };
 
 ArticleProvider.prototype.save = function(articles, callback) {
