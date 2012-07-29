@@ -13,7 +13,7 @@ Testing ground for node.js api with mongodb. This is as simple blog site that wi
 
 ## Todo
 
-* update use of `createHexFromStrong` method as it's been deprecated. Use `new ObjectID(id)` method instead
+* update use of `createHexFromString` method as it's been deprecated. Use `new ObjectID(id)` method instead
 * Load  and test onto heroku server
 * Include API for another client to consume: website, mobile app
      * will return JSON
