@@ -8,6 +8,7 @@ Testing ground for node.js api with mongodb. This is as simple blog site that wi
 1. install dependencies and libraries `$ npm install`
 2. Fire up Mongo DB `$ mongod`
 3. Run node app `$ node app.js`
+4. Open browser to `http://localhost:3000` and begin viewing/creating posts
 
 
 ## Todo
