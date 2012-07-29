@@ -1,10 +1,9 @@
-node-mongo-blog
-===
+# node-mongo-blog
 
 Testing ground for node.js api with mongodb. This is as simple blog site that will be extended and modified for the MyTestimony project I'm working on.
 
 
-#Usage
+## Usage
 
 1. install dependencies and libraries `$ npm install`
 2. Fire up Mongo DB `$ mongod`
