@@ -15,6 +15,9 @@ Testing ground for node.js api with mongodb. This is as simple blog site that wi
 
 * update use of `createHexFromString` method as it's been deprecated. Use `new ObjectID(id)` method instead
 * Load  and test onto heroku server
+     * ~added Procfile~
+     * ~added free mongohq addon of 16mb. Verified account on heroku~
+     * get mongo db running
 * Include API for another client to consume: website, mobile app
      * will return JSON
 * Look into build server, continuous integration architecture to automatically run build deployment upon git push
