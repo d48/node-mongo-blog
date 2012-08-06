@@ -1,5 +1,6 @@
 // need different string here
-var mongostr = 'mongodb://heroku:39c02d21a2de06d053238109c338daac@alex.mongohq.com:10007/app6469233';
+// var mongostr = 'mongodb://heroku:39c02d21a2de06d053238109c338daac@alex.mongohq.com:10007/app6469233';
+var mongostr = process.env.MONGOHQ_URL;
 var localstr = 'mongodb://localhost/node-mongo-blog';
 
 var connect = require('connect')
