@@ -1,9 +1,3 @@
-var Db = require('mongodb').Db;
-var Connection = require('mongodb').Connection;
-var Server = require('mongodb').Server;
-var BSON= require('mongodb').pure().BSON;
-var ObjectID = require('mongodb').ObjectID;
-
 // need different string here
 var mongostr = 'mongodb://heroku:39c02d21a2de06d053238109c338daac@alex.mongohq.com:10007/
 app6469233';
