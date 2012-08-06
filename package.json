@@ -2,10 +2,15 @@
     "name": "node-mongo-blog"
   , "version": "0.0.1"
   , "private": true
+  , "engines": {
+      "node": "0.8.x"
+    , "npm": "1.1.x"
+  }
   , "dependencies": {
       "express": "2.5.8"
     , "stylus": ">= 0.0.1"
     , "jade": ">= 0.0.1"
     , "mongodb": ">= 0.9.6-7"
+    , "connect": "1.8.5"
   }
 }

@@ -4,6 +4,16 @@ var Server = require('mongodb').Server;
 var BSON= require('mongodb').pure().BSON;
 var ObjectID = require('mongodb').ObjectID;
 
+// need different string here
+var mongostr = 'mongodb://heroku:39c02d21a2de06d053238109c338daac@alex.mongohq.com:10007/
+app6469233';
+var localstr = 'mongodb://localhost/node-mongo-blog';
+
+var connect = require('connect')
+  , mongo = require('mongodb')
+  , database = null;
+
+
 // Methods
 // --------------------------------------------
 
@@ -11,9 +21,16 @@ var ObjectID = require('mongodb').ObjectID;
  * @method ArticleProvider
  * @description creates new database Connection
  */
-ArticleProvider = function(host, port) {
-  this.db = new Db('node-mongo-blog', new Server(host, port, {auto_reconnect: true}, {}));
-  this.db.open(function(){});
+ArticleProvider = function() {
+  mongo.connect(mongostr, {}, function(error, db) {
+    console.log("connected, db: " + db);
+
+    database = db;
+
+    database.addListener("error", function(error) {
+      console.log("Error connecting to MongoHQ");
+    });
+  })
 };
 
 /**

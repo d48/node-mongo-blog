@@ -11,6 +11,8 @@ var app = module.exports = express.createServer();
 // Configuration
 
 app.configure(function(){
+  app.set('connstring', process.env.MONGOHQ_URL || ('mongodb://' + app.set('m_host') + '/' + app.set('m_database')));
+  console.log('constring is: ' + app.set('connstring'));
   app.set('views', __dirname + '/views');
   app.set('view engine', 'jade');
   app.use(express.bodyParser());
@@ -83,5 +85,7 @@ app.post('/blog/addComment', function(req, res) {
   );
 });
 
-app.listen(3000);
-console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
+var port = process.env.PORT || 3000;
+app.listen(port, function() {
+  console.log("Listening on " + port);
+});
