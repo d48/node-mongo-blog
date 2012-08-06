@@ -31,7 +31,7 @@ ArticleProvider = function() {
  * @description returns collection of articles
  */
 ArticleProvider.prototype.getCollection = function(callback) {
-  this.db.collection('articles', function(error, article_collection) {
+  database.collection('articles', function(error, article_collection) {
     if (error) callback(error);
     else callback(null, article_collection);
   });
