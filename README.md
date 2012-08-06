@@ -18,6 +18,7 @@ Testing ground for node.js api with mongodb. This is as simple blog site that wi
      * ~~added Procfile~~
      * ~~added free mongohq addon of 16mb. Verified account on heroku~~
      * ~~get mongo db running~~
+* Change heroku add-on for mongodb to MongoLab instead of MongoHQ. MongoLab gives 240MB free storage. yay 
 * Include API for another client to consume: website, mobile app
      * will return JSON
 * Look into build server, continuous integration architecture to automatically run build deployment upon git push
